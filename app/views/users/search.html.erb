@@ -1,0 +1,22 @@
+<h3>Query Results</h3>
+<ol>
+	<h3>Word Frequency</h3>
+	<% @frequency.each do |key,val| %>
+	<p>Key: <%= key %> Frequency: <%= val %></p>
+	<% end %>
+
+	<% @u.each do |sample| %>
+	<%=  markup_keywords(sample).html_safe %>
+	<% @key_matches.each do |s| %>
+	<% if s.sample_id == sample.id %>
+	<ul>
+		<li><h4>Text:</h4> <%= s.text %></li>
+		<h4>Sentiment score: </h4><%= s.sentiment_score %>
+		<h4>Sentiment type:</h4> <span class ="<%= s.sentiment_type %>"><%= s.sentiment_type %></span>
+		<h4>Gender:</h4> <span class ="<%= s.gender %>"><%= s.gender %></span>
+		<h4>Sample Id:</h4><%= s.sample_id %>
+	</ul>
+	<% end %>
+	<% end %>
+	<% end %>
+</ol>
