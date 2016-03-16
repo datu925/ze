@@ -1,20 +1,28 @@
+
 language: ruby
+addons:
+ apt:
+   packages:
+   - tesseract-ocr
 rvm:
-  - 2.0.0
+ - 2.0.0
 env:
-  - DB=postgresql
+ - DB=postgresql
 script:
-  - bundle exec rake spec
+ - bundle exec rake spec
 before_script:
-  - bundle exec rake db:create RAILS_ENV=test
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
+ - bundle exec rake db:create RAILS_ENV=test
+ - bundle exec rake db:migrate
+ - bundle exec rake db:test:prepare
 bundler_args: --binstubs=./bundler_stubs
 deploy:
-  provider: heroku
-  app: projectze
-  api_key: "ac2f23ae-49dc-46e5-bb29-8bd65ce12cc6"
-  run:
-    - "bundle"
-    - "rake db:migrate"
-  strategy: git
+ provider: heroku
+ app: projectze
+ api_key: "ac2f23ae-49dc-46e5-bb29-8bd65ce12cc6"
+ run:
+   - "bundle"
+   - "rake db:migrate"
+ strategy: git
+before_install:
+ - brew update
+ - brew install https://raw.githubusercontent.com/Homebrew/homebrew/8ba134eda537d2cee7daa7ebdd9f728389d9c53e/Library/Formula/tesseract.rb
