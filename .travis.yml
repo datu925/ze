@@ -4,8 +4,7 @@ addons:
     packages:
       - tesseract-ocr
 before_install:
-  - "brew update"
-  - "brew install https://raw.githubusercontent.com/Homebrew/homebrew/8ba134eda537d2cee7daa7ebdd9f728389d9c53e/Library/Formula/tesseract.rb"
+  - "apt-get install https://raw.githubusercontent.com/Homebrew/homebrew/8ba134eda537d2cee7daa7ebdd9f728389d9c53e/Library/Formula/tesseract.rb"
 before_script:
   - "bundle exec rake db:create RAILS_ENV=test"
   - "bundle exec rake db:migrate"
@@ -21,6 +20,8 @@ deploy:
   strategy: git
 env:
   - DB=postgresql
+  - LDFLAGS="-L/usr/local/Cellar/leptonica/1.72/lib -L/usr/local/Cellar/tesseract/3.02.02_3/lib"
+  - CFLAGS="-I/usr/local/Cellar/tesseract/3.02.02_3/include -I/usr/local/Cellar/leptonica/1.72/include"
 language: ruby
 rvm:
   - "2.0.0"
