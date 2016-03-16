@@ -17,7 +17,7 @@ SampleView.prototype.displayHighlightedSample = function() {
 };
 
 SampleView.prototype.displayHighlightCaption = function() {
-  $("#highlighted-text").html("<h3>Highlighted Text</h3><p>See below for a deeper analysis of your text: <span class='negative'>Red</span> means negative. <span class='positive'>Green</span> means positive. <span class='female'>Pink</span> means it's a feminine-coded word. <span class='male'>Blue</span> means it's a masculine-coded word.</p>")
+  $("#highlighted-text").html("<h4>Highlighted Text</h4><p>See below for a deeper analysis of your text: <span class='negative'>Red</span> means negative. <span class='positive'>Green</span> means positive. <span class='female'>Pink</span> means it's a feminine-coded word. <span class='male'>Blue</span> means it's a masculine-coded word.</p>")
 }
 
 SampleView.prototype.wrapSampleContent = function() {
@@ -32,9 +32,10 @@ SampleView.prototype.wrapSampleContent = function() {
 };
 
 SampleView.prototype.showStatistics = function() {
+  $("#averages").prepend("<h3>" + this.sample.name + "</h3>");
   $("#averages").html(
 
-    "<h3>Average sentiment by gender</h3><p>Using sentiment analysis, these averages reflect, on a scale from -1 to 1, how negatively or positively the passage feels about men and women.</p>"
+    "<h4>Average sentiment by gender</h4><p>Using sentiment analysis, these averages reflect, on a scale from -1 to 1, how negatively or positively the passage feels about men and women.</p>"
 
     );
   $("#averages").append(this.generateAverageView(this.sample.calculateAverages()));
@@ -56,7 +57,9 @@ SampleView.prototype.createNumberLine = function(sample) {
 
   $("#number-line").html(
 
+
   "<h3>Keywords</h3><p>These are the gender-coded keywords in your passage and how our algorithm rated their sentiment. Hover over a circle to see what keyword it represents.</p>"
+
 
   )
 

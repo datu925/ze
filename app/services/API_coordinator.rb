@@ -6,15 +6,20 @@ class APICoordinator
   def initialize(params)
     if params[:url]
       @input = {type: :url, value: params[:url][:url]}
+      @sample_name = params[:url][:name]
     elsif params[:image]
       @input = {type: :text, value: process_image(params[:image])}
+      @sample_name = params[:sample][:name]
     elsif params[:tweet]
       @input = {type: :text, value: fetch_tweets(params[:tweet][:content])}
+      @sample_name = params[:tweet][:name]
     elsif params[:file]
       parsed_file = Yomu.new params[:file].tempfile
       @input = {type: :text, value: parsed_file.text}
+      @sample_name = params[:file].original_filename
     else
       @input = {type: :text, value: params[:sample][:content]}
+      @sample_name = params[:sample][:name]
     end
   end
 
@@ -91,7 +96,7 @@ class APICoordinator
 
   def create_sample
     if @response['text']
-      @sample = Sample.new(content: @response['text'])
+      @sample = Sample.new(content: @response['text'], name: @sample_name)
     end
   end
 

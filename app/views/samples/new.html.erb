@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
-<h2 class="new-sample-title">Make Your Analysis</h2>
+<h2 class="new-sample-title">Analyze Data</h2>
 
 <div id="sample-form-container">
 	<div id="toggle-form">
@@ -16,25 +16,34 @@
 
 	<div id="text_form">
 		<%= form_for :sample, {url: analyze_path, remote: true, html: { class: "content-input text-box" } } do |f| %>
-		<%= f.text_area :content %>
+		<%= f.text_field :name, :placeholder => "Sample name", id: 'text_sample_name'  %>
 		<br>
-		<%= f.submit "Enter your text!" %>
+		<br>
+		<%= f.text_area :content, :placeholder => "Sample text" %>
+		<br>
+		<%= f.submit "Analyze!" %>
 		<% end %>
 	</div>
 
 	<div id="twitter_form">
 		<%= form_for :tweet, {url: analyze_path, remote: true, html: { class: "content-input text-box", autocomplete: "off" } } do |f| %>
-		<%= f.text_field :content %>
+		<%= f.text_field :name, :placeholder => "Sample name"  %>
 		<br>
-		<%= f.submit "Enter a twitter handle!", :class => 'twitter-submit-button' %>
+		<br>
+		<%= f.text_field :content, :placeholder => "Twitter handle" %>
+		<br>
+		<%= f.submit "Analyze", :class => 'twitter-submit-button' %>
 		<% end %>
 	</div>
 
 	<div id="url_form">
 		<%= form_for :url, {url: analyze_path, remote: true, html: { class: "content-input text-box" } } do |f| %>
-		<%= f.text_field :url %>
+		<%= f.text_field :name, :placeholder => "Sample name", id: 'url_sample_name'  %>
 		<br>
-		<%= f.submit "Enter your url!", :class => 'twitter-submit-button' %>
+		<br>
+		<%= f.text_field :url, :placeholder => "URL" %>
+		<br>
+		<%= f.submit "Analyze", :class => 'twitter-submit-button' %>
 		<% end %>
 	</div>
 

@@ -38,6 +38,6 @@ class SamplesController < ApplicationController
 
   private
   def sample_params
-    params.require(:sample).permit(:content)
+    params.require(:sample).permit(:content, :name)
   end
 end
