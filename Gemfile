@@ -33,7 +33,7 @@ gem 'twitter'
 
 gem 'guess'
 gem 'd3-rails'
-gem 'tesseract-ocr'
+# gem 'tesseract-ocr'
 gem 'remotipart'
 gem 'ejs'
 
