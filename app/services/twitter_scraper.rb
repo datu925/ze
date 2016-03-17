@@ -19,7 +19,7 @@ class TwitterScraper
     response = yield(max_id)
     collection += response
     response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
-  end
+  end  
 
   def user_whole_timeline(handle)
     collect_with_max_id do |max_id|
