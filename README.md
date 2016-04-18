@@ -7,7 +7,11 @@ Project Ze is a text-analysis app designed for our 8-day capstone project at [De
 
 ![Analyzing Donald Trump's twitter feed for sentiment and bias.](/public/images/project-ze-screenshot-1.png)
 
-![Scatter plot showing sentiment scores of gendered keywords for a collection of articles from Gawker, the New York Times, and other websites](/public/images/project-ze-screenshot-2.png)
+Analyzing Donald Trump's twitter feed for sentiment and bias.
+
+![Scatter plot showing sentiment scores of gendered keywords for a collection of articles from Gawker, the New York Times, and other websites](/public/images/project-ze-screenshot-2.png) 
+
+Scatter plot showing sentiment scores of gendered keywords for a collection of articles from Gawker, the New York Times, and other websites
 
 ### Availability
 
