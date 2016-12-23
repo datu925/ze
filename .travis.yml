@@ -1,4 +1,8 @@
 language: ruby
+addons:
+  apt:
+    packages:
+    - tesseract-ocr
 rvm:
   - 2.0.0
 env:
@@ -18,3 +22,5 @@ deploy:
     - "bundle"
     - "rake db:migrate"
   strategy: git
+
+
