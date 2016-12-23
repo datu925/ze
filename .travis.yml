@@ -1,20 +1,30 @@
-language: ruby
-rvm:
-  - 2.0.0
-env:
-  - DB=postgresql
-script:
-  - bundle exec rake spec
+---
+sudo: required
+addons:
+  apt:
+    packages:
+      - tesseract-ocr
+before_install:
+  - "sudo apt-get install http://packages.ubuntu.com/precise/tesseract-ocr"
 before_script:
-  - bundle exec rake db:create RAILS_ENV=test
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
-bundler_args: --binstubs=./bundler_stubs
+  - "bundle exec rake db:create RAILS_ENV=test"
+  - "bundle exec rake db:migrate"
+  - "bundle exec rake db:test:prepare"
+bundler_args: "--binstubs=./bundler_stubs"
 deploy:
-  provider: heroku
+  api_key: ac2f23ae-49dc-46e5-bb29-8bd65ce12cc6
   app: projectze
-  api_key: "ac2f23ae-49dc-46e5-bb29-8bd65ce12cc6"
+  provider: heroku
   run:
-    - "bundle"
+    - bundle
     - "rake db:migrate"
   strategy: git
+env:
+  - DB=postgresql
+  - LDFLAGS="-L/usr/local/Cellar/leptonica/1.72/lib -L/usr/local/Cellar/tesseract/3.02.02_3/lib"
+  - CFLAGS="-I/usr/local/Cellar/tesseract/3.02.02_3/include -I/usr/local/Cellar/leptonica/1.72/include"
+language: ruby
+rvm:
+  - "2.0.0"
+script:
+  - "bundle exec rake spec"
